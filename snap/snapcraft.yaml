@@ -1,0 +1,25 @@
+name: gosearch
+base: core18
+version: git
+summary: terminal search by go
+description: |
+  Searching on terminal and open in your default browser.
+
+grade: stable
+confinement: strict
+
+parts:
+    gosearch:
+      plugin: go
+      source: .
+      go-importpath: https://github.com/trkhanh/gosearch.git
+      build-packages:
+        - gcc
+
+apps:
+  gosearch:
+    command: gs
+    plug:
+      - desktop
+      - network
+      - network-bind
